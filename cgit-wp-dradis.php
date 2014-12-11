@@ -3,7 +3,7 @@
 /*
 
 Plugin Name: Castlegate IT WP Dradis
-Plugin URI: http://github.com/castlegateit/cgit-wp-obfuscator
+Plugin URI: http://github.com/castlegateit/cgit-wp-dradis
 Description: Detects unwanted robots.
 Version: 1.0
 Author: Castlegate IT
