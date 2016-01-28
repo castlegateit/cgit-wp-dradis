@@ -12,19 +12,18 @@ License: MIT
 
 */
 
-function cgit_wp_dradis_contact () {
-    echo '<div class="error"><p>Warning: <code>robots.txt</code> detected.</p></div>';
+if (file_exists($_SERVER['DOCUMENT_ROOT'] . '/robots.txt')) {
+    add_action('admin_notices', function() {
+        echo '<div class="error"><p><strong>Warning:</strong>'
+            . ' <code>robots.txt</code> detected.</p></div>';
+    });
 }
 
-function cgit_wp_dradis_block () {
-    $admin = admin_url();
-    echo "<div class='error'><p>Warning: search engines are being blocked by <a href='{$admin}options-reading.php'>WordPress settings</a>.</p></div>";
-}
-
-if ( file_exists( $_SERVER['DOCUMENT_ROOT'] . '/robots.txt' ) ) {
-    add_action('admin_notices', 'cgit_wp_dradis_contact');
-}
-
-if ( get_option('blog_public') == 0 ) {
-    add_action('admin_notices', 'cgit_wp_dradis_block');
+if (get_option('blog_public') == 0) {
+    add_action('admin_notices', function() {
+        echo '<div class="error"><p><strong>Warning:</strong>'
+            . ' search engines are being blocked by <a href="'
+            . admin_url() . 'options-reading.php">WordPress settings</a>'
+            . '.</p></div>';
+    });
 }
