@@ -12,6 +12,10 @@ License: MIT
 
 */
 
+if (!defined('ABSPATH')) {
+    wp_die('Access denied');
+}
+
 $warn = function ($content) {
     add_action('admin_notices', function () use ($content) {
         ?>
